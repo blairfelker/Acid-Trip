@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Acid Trip</title>
+        <meta charset="utf8">
+    </head>
+    <body>
+        <h1>Acid Trip</h1>
+        <h2>By Blair Felker</h2>
+
+        <form action="/trip" method="POST">
+            <input type="file" name="img"/>
+            <br/>
+            Single <input type="number" name="prescisionS" style="width:50px" min="1" max="99" oninput="validity.valid||(value='');"> mg</input>
+            <br/>
+            Multiple <input type="number" name="prescisionM1" style="width:50px" min="1" max="99" oninput="validity.valid||(value='');"> mg</input> 
+                  to <input type="number" name="prescisionM2" style="width:50px" min="1" max="99" oninput="validity.valid||(value='');"> mg</input>
+            <p></p>
+            <button style="color:limegreen">Begin Tripping Balls!!</button>
+
+    </body>
+</html>
