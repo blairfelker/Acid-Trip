@@ -3,20 +3,29 @@
     <head>
         <title>Acid Trip</title>
         <meta charset="utf8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"/>
     </head>
     <body>
         <h1>Acid Trip</h1>
+        <br>
         <h2>By Blair Felker</h2>
-
         <form action="/trip" method="POST">
-            <input type="file" name="img"/>
-            <br/>
-            Single <input type="number" name="prescisionS" style="width:50px" min="1" max="99" oninput="validity.valid||(value='');"> mg</input>
-            <br/>
-            Multiple <input type="number" name="prescisionM1" style="width:50px" min="1" max="99" oninput="validity.valid||(value='');"> mg</input> 
-                  to <input type="number" name="prescisionM2" style="width:50px" min="1" max="99" oninput="validity.valid||(value='');"> mg</input>
+            <div>
+                Single <input type="number" name="prescisionS" style="width:50px" min="1" max="99" oninput="validity.valid||(value='');"> mg</input>
+                <br>
+                Multiple <input type="number" name="prescisionM1" style="width:50px" min="1" max="99" oninput="validity.valid||(value='');"> mg</input> 
+                    to <input type="number" name="prescisionM2" style="width:50px" min="1" max="99" oninput="validity.valid||(value='');"> mg</input>
+            </div>
+            <br>
+            <div>
+                <input type="file" name="img"/>
+            </div>
+            <br>
+            <div>
+                <input type="radio" name="process" checked="checked">Serial
+                <input type="radio" name="process" disabled>Parallel
+            </div>
             <p></p>
-            <button style="color:limegreen">Begin Tripping Balls!!</button>
-
+            <button>Begin Tripping Balls!!</button>
     </body>
 </html>
