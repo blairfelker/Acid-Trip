@@ -4,18 +4,22 @@ import os
 from flask import Flask, render_template, request, send_file
 from time import time
 
-def convolve(I, width: int, height: int, H: int):
+def convolve(I: np.ndarray, width: int, height: int, H: int):
     new = np.zeros(I.shape)
-    for row in range(width):
-        for col in range(height):
-            sum = 0
-            for Hrow in range(H):
-                for Hcol in range(H):
-                    try:
-                        sum += I[row+Hrow-(H//2), col+Hcol-(H//2)]
-                    except:
-                        pass
-            new[row, col] = sum
+    H_half = H//2
+    for w in range(width):
+        for h in range(height):
+            if w-H_half < 0 or w-H_half+H > width-1 or h-H_half < 0 or h-H_half+H > height-1:
+                sum = [0,0,0]
+                for Hw in range(H):
+                    for Hh in range(H):
+                        try:
+                            sum += I[w+Hw-H_half, h+Hh-H_half]
+                        except IndexError:
+                            pass
+                new[w, h] = sum
+            else:
+                new[w, h] = I[w-H_half:w-H_half+H, h-H_half:h-H_half+H].sum(axis=(0,1))
     return new
 
 def cache(file: str, H: int):
